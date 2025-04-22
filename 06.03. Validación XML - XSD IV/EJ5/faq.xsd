@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Nombre: [Kaiet de pablo] 
+Curso: [Asir1] 
+Fecha: [19/04/2025] 
+Ejercicio: [FAQ] 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Definición del elemento faq -->
+  <xs:element name="faq">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Elemento info -->
+        <xs:element name="info">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="titulo" type="xs:string"/>
+              <xs:element name="autor" type="xs:string"/>
+              
+              <!-- Elementos opcionales email, version y fecha -->
+              <xs:element name="email" type="xs:string" minOccurs="0"/>
+              <xs:element name="version" type="xs:string" minOccurs="0"/>
+              <xs:element name="fecha" type="xs:date" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- Elemento part -->
+        <xs:element name="part">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- Elementos q dentro de part, puede haber uno o más -->
+              <xs:element name="q" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="qtext" type="xs:string"/>
+                    <xs:element name="a" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Restricción para el elemento version -->
+  <xs:element name="version" type="xs:string">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="\d+(\.\d+)+"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+</xs:schema>

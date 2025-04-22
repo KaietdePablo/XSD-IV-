@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Nombre: [Kaiet de pablo] 
+Curso: [Asir1] 
+Fecha: [19/04/2025] 
+Ejercicio: [Alumnos 1] 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <!-- Definición del atributo dni -->
+  <xs:attribute name="dni" type="xs:string" 
+    pattern="\d{8}[A-Z]" />
+
+  <!-- Definición del elemento alumno -->
+  <xs:element name="alumno">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Elemento nombre -->
+        <xs:element name="nombre" type="xs:string"/>
+
+        <!-- Elemento direccion -->
+        <xs:element name="direccion">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="calle" type="xs:string"/>
+              <xs:element name="numero" type="xs:int"/>
+              <xs:element name="ciudad" type="xs:string"/>
+              <xs:element name="provincia" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- Elemento teléfono, que puede aparecer entre 0 y 5 veces -->
+        <xs:element name="telefono" type="xs:int" minOccurs="0" maxOccurs="5"/>
+        
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

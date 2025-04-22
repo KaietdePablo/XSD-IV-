@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Nombre: [Kaiet de pablo] 
+Curso: [Asir1] 
+Fecha: [19/04/2025] 
+Ejercicio: [Librería] 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Definición del tipo para teléfono, validando 9 dígitos -->
+  <xs:simpleType name="telefonoType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{9}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Definición del elemento libreria -->
+  <xs:element name="libreria">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Código de la librería (un número entero entre 1000 y 9999) -->
+        <xs:element name="codigo" type="xs:int">
+          <xs:restriction base="xs:int">
+            <xs:minInclusive value="1000"/>
+            <xs:maxInclusive value="9999"/>
+          </xs:restriction>
+        </xs:element>
+
+        <!-- Dirección de la librería -->
+        <xs:element name="direccion" type="xs:string"/>
+
+        <!-- Teléfono de la librería -->
+        <xs:element name="telefono" type="telefonoType"/>
+
+        <!-- Propietario de la librería -->
+        <xs:element name="propietario">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- Nombre del propietario -->
+              <xs:element name="nombre" type="xs:string"/>
+
+              <!-- Teléfonos del propietario, puede haber uno o varios -->
+              <xs:element name="telefono" type="telefonoType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- Libros de la librería -->
+        <xs:element name="libro">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- Título del libro -->
+              <xs:element name="titulo" type="xs:string"/>
+
+              <!-- Autor del libro -->
+              <xs:element name="autor" type="xs:string"/>
+
+              <!-- Formato del libro: rústica, tapa blanda o tapa dura (opcional) -->
+              <xs:element name="formato" type="xs:string" minOccurs="0">
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="Rústica"/>
+                  <xs:enumeration value="Tapa blanda"/>
+                  <xs:enumeration value="Tapa dura"/>
+                </xs:restriction>
+              </xs:element>
+
+              <!-- Año de publicación del libro (opcional) -->
+              <xs:element name="publicacion" type="xs:gYear" minOccurs="0"/>
+
+              <!-- Precio del libro (opcional) -->
+              <xs:element name="precio" type="xs:decimal" minOccurs="0"/>
+
+              <!-- Cantidad del libro (opcional) -->
+              <xs:element name="cantidad" type="xs:int" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

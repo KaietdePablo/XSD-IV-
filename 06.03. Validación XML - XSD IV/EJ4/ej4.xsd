@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Nombre: [Kaiet de pablo] 
+Curso: [Asir1] 
+Fecha: [19/04/2025] 
+Ejercicio: [Heladería 2] 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Definición del elemento heladeria -->
+  <xs:element name="heladeria">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Definición del elemento helado -->
+        <xs:element name="helado">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- Condición para que el helado sea de fresa y chocolate o vainilla y chocolate -->
+              <xs:choice>
+                <xs:sequence>
+                  <xs:element name="fresa" type="xs:nilable" minOccurs="1" maxOccurs="1"/>
+                  <xs:element name="chocolate" type="xs:nilable" minOccurs="1" maxOccurs="1"/>
+                </xs:sequence>
+                <xs:sequence>
+                  <xs:element name="vainilla" type="xs:nilable" minOccurs="1" maxOccurs="1"/>
+                  <xs:element name="chocolate" type="xs:nilable" minOccurs="1" maxOccurs="1"/>
+                </xs:sequence>
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
